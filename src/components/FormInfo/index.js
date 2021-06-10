@@ -1,5 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+
 import emailjs from 'emailjs-com';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
@@ -9,7 +10,6 @@ import {
   Input,
   Title,
   InputContainer,
-  Label,
   TextAreaContainer,
   TextInput,
   Btn,
@@ -65,16 +65,14 @@ const FormInfo = () => {
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Title>Contact Us</Title>
         {content.inputs.map((input, key) => {
-          const { name, label, type, message, value } = input;
+          const { name, type, message, value, placeHolder } = input;
           return (
             <InputContainer key={key}>
               <Input
                 type={type}
+                placeholder={placeHolder}
                 {...register(name, { required: { value, message } })}
               />
-              <Label>{label}</Label>
-              <span>{label}</span>
-              {console.log(Object.values(input)[1])}
               {errors[input.name] && <ErrorMessage>{message}</ErrorMessage>}
             </InputContainer>
           );
@@ -82,17 +80,16 @@ const FormInfo = () => {
 
         <TextAreaContainer>
           <TextInput
+            placeholder="Message"
             {...register('message', {
               required: { value: true, message: 'Please type your message' },
             })}
           ></TextInput>
-          <Label>Message</Label>
-          <span>Message</span>
           {errors.message && (
             <ErrorMessage>{errors.message.message}</ErrorMessage>
           )}
         </TextAreaContainer>
-        <Btn type="submit" value="send" />
+        <Btn type="submit" value="send" whileHover={{ scale: 1.1 }} />
       </Form>
       <ToastContainer />
     </ContactForm>

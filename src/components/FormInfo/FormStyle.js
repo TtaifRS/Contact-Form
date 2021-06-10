@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
 export const ContactForm = styled.div`
   background-color: #9acd32;
@@ -21,6 +22,7 @@ export const Form = styled.form`
   z-index: 10;
   overflow: hidden;
   position: relative;
+  width: 70%;
 `;
 
 export const Title = styled.h3`
@@ -31,13 +33,8 @@ export const Title = styled.h3`
   margin-bottom: 0.7rem;
 `;
 
-export const InputContainer = styled.div`
-  position: relative;
-  margin: 1rem 0;
-`;
-
 export const Input = styled.input`
-  width: 100%;
+  width: 95%;
   outline: none;
   border: 2px solid #fafafa;
   background: none;
@@ -50,31 +47,25 @@ export const Input = styled.input`
   transition: 0.3s;
 `;
 
-export const Label = styled.label`
-  position: absolute;
-  top: 50%;
-  left: 15px;
-  transform: translateY(-50%);
-  padding: 0 0.4rem;
-  color: #fafafa;
-  font-size: 0.9rem;
-  font-weight: 400;
-  pointer-events: none;
-  z-index: 1000;
-  transition: 0.5s;
+export const TextAreaContainer = styled.div`
+  position: relative;
+  margin: 1rem 0;
 `;
-
-export const TextAreaContainer = styled.div``;
 
 export const TextInput = styled.textarea`
   padding: 0.8rem 1.2rem;
+  width: 95%;
+  outline: none;
+  background: none;
+  color: #fff;
   min-height: 150px;
   border-radius: 22px;
   resize: none;
+  border: 2px solid #fafafa;
   overflow-y: auto;
 `;
 
-export const Btn = styled.input`
+export const Btn = styled(motion.input)`
   padding: 0.6rem 1.3rem;
   background-color: #fff;
   border: 2px solid #fafafa;
@@ -94,5 +85,11 @@ export const Btn = styled.input`
 `;
 
 export const ErrorMessage = styled.span`
-  color: red;
+  color: #b00000;
+  padding: 1rem;
+`;
+
+export const InputContainer = styled(motion.div)`
+  position: relative;
+  margin: 1rem 0;
 `;

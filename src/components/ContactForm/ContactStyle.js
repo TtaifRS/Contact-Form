@@ -10,6 +10,12 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  @media (max-width: 850px) {
+    width: 90%;
+  }
+  @media (max-width: 480px) {
+    padding: 1.5rem;
+  }
 `;
 
 export const BigCircle = styled.span`
@@ -19,8 +25,8 @@ export const BigCircle = styled.span`
   border-radius: 50%;
   background: linear-gradient(
     to bottom,
-    rgba(154, 205, 50, 1) 40%,
-    rgba(125, 194, 80, 1) 100%
+    rgba(154, 205, 50, 0.6) 40%,
+    rgba(125, 194, 80, 0.6) 100%
   );
   bottom: 50%;
   right: 50%;
@@ -48,4 +54,7 @@ export const FormContainer = styled.div`
   overflow: hidden;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  @media (max-width: 850px) {
+    grid-template-columns: 1fr;
+  }
 `;

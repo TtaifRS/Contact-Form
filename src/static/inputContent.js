@@ -6,6 +6,7 @@ const content = {
       type: 'text',
       value: true,
       message: 'Please enter your name',
+      placeHolder: 'Username',
     },
     {
       label: 'email',
@@ -13,6 +14,7 @@ const content = {
       type: 'email',
       value: true,
       message: 'Please enter valid email',
+      placeHolder: 'Email',
     },
     {
       label: 'phone',
@@ -20,6 +22,7 @@ const content = {
       type: 'tel',
       value: true,
       message: 'Please enter your phone number',
+      placeHolder: 'Phone',
     },
     {
       label: 'address',
@@ -27,6 +30,7 @@ const content = {
       type: 'text',
       value: false,
       message: 'Please enter your phone number',
+      placeHolder: 'Address',
     },
   ],
 };
