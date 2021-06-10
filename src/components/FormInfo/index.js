@@ -1,6 +1,8 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 
+import emailjs from 'emailjs-com';
+
 import {
   ContactForm,
   Form,
@@ -16,9 +18,27 @@ import {
 import content from '../../static/inputContent';
 
 const FormInfo = () => {
-  const { register, handleSubmit, errors } = useForm();
+  const { register, handleSubmit, errors, reset } = useForm();
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = async (data) => {
+    try {
+      const templateParams = {
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+        message: data.message,
+      };
+      await emailjs.send(
+        process.env.REACT_APP_SERVICE_ID,
+        process.env.REACT_APP_TEMPLATE_ID,
+        templateParams,
+        process.env.REACT_APP_USER_ID
+      );
+      reset();
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   return (
     <ContactForm>
@@ -34,7 +54,7 @@ const FormInfo = () => {
           );
         })}
         <TextAreaContainer>
-          <TextInput name="message"></TextInput>
+          <TextInput {...register('message')}></TextInput>
           <Label>Message</Label>
           <span>Message</span>
         </TextAreaContainer>

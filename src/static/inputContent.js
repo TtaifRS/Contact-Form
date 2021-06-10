@@ -2,7 +2,7 @@ const content = {
   inputs: [
     {
       label: 'Username',
-      name: 'username',
+      name: 'name',
       type: 'text',
     },
     {
