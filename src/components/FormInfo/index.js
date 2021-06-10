@@ -1,4 +1,6 @@
 import React from 'react';
+import { useForm } from 'react-hook-form';
+
 import {
   ContactForm,
   Form,
@@ -11,26 +13,26 @@ import {
   Btn,
 } from './FormStyle';
 
+import content from '../../static/inputContent';
+
 const FormInfo = () => {
+  const { register, handleSubmit, errors } = useForm();
+
+  const onSubmit = (data) => console.log(data);
+
   return (
     <ContactForm>
-      <Form>
+      <Form onSubmit={handleSubmit(onSubmit)}>
         <Title>Contact Us</Title>
-        <InputContainer>
-          <Input type="text" name="name" />
-          <Label>Username</Label>
-          <span>Username</span>
-        </InputContainer>
-        <InputContainer>
-          <Input type="text" name="email" />
-          <Label>Email</Label>
-          <span>Email</span>
-        </InputContainer>
-        <InputContainer>
-          <Input type="tel" name="phone" />
-          <Label>Phone</Label>
-          <span>Phone</span>
-        </InputContainer>
+        {content.inputs.map((input, key) => {
+          return (
+            <InputContainer key={key}>
+              <Input {...register(input.name)} type={input.type} />
+              <Label>{input.label}</Label>
+              <span>{input.label}</span>
+            </InputContainer>
+          );
+        })}
         <TextAreaContainer>
           <TextInput name="message"></TextInput>
           <Label>Message</Label>
