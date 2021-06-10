@@ -92,3 +92,7 @@ export const Btn = styled.input`
     color: #fff;
   }
 `;
+
+export const ErrorMessage = styled.span`
+  color: red;
+`;
